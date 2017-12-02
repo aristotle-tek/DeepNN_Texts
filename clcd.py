@@ -2,6 +2,7 @@
 
 '''
 CNN LSTM Model for regression with concrete dropout (Gal, et al 2017)
+	- generates simulated speech data online (but uses fixed test data).
 	- depends: concrete_fns.py and ideol_utils.py.
 '''
 
