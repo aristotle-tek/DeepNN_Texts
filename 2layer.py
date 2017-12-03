@@ -70,7 +70,7 @@ def calc_partial_v(x, y, M, b1, v, b2, whichcalc):
 	s2 = np.dot(s1, v) + b2
 	forwardpass = sigmoid(s2)
 	term1 = 2*(forwardpass - y)
-	term2 = s1[whichcalc] * forwardpass * (1-forwardpass)
+	term2 = forwardpass * (1-forwardpass) * s1[whichcalc]
 	return term1*term2
 
 
@@ -92,7 +92,7 @@ def calc_partial_inner_layer(x, y, M, b1, v, b2, layer2_deltas, i, j, bias):
 	else:
 		sumlayers = layer2_deltas * v[j]
 		if bias:
-			partial = 1 * sumlayers * 1		
+			partial = 1 * sumlayers * 1
 		else: 
 			partial = 1 * sumlayers * x[i] 
 		return partial
@@ -195,4 +195,4 @@ if __name__ == "__main__":
 	nn2 = twolayerNN()
 	nn2.predict()
 	nn2.train(epochs=1000, approx=True)
-
+	
